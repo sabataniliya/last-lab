@@ -1,16 +1,15 @@
 public abstract class Animal {
     protected int legs;
-     public Animal(){
-         this.legs=legs;
-     }
-     public  void Walk(){
-         System.out.println("walk in many ways");
-     }
-     public abstract void eat();
+    public Animal(){
+        this.legs=legs;
     }
+    public  void Walk(){
+        System.out.println("walk in many ways");
+    }
+    public abstract void eat();
+}
 public class Spider extends Animal{
     public Spider(){
-        super();
         System.out.println("spider is created");
     }
 
@@ -20,17 +19,20 @@ public class Spider extends Animal{
     }
 }
 public class Cat extends Animal implements Pet{
-
-    public void setName(String name){
-        Pet.super.setName(name);
-
+    String name1;
+    public void setName(String n1){
+     this.name1=n1;
     }
-
+    public String getName(){
+        return name1;
+    }
 
     public Cat(){
         System.out.println("cat is created");
     }
-
+    public Cat(String n1){
+        this.name1=n1;
+    }
     public void play(){
         System.out.println("cat plays with yarn");
     }
@@ -41,17 +43,20 @@ public class Cat extends Animal implements Pet{
     }
 }
 public interface Pet {
-    String name;
-    public String getName(){
-        return name;
-    }
-    public void setName(String name){
-        this.name=name;
-    }
-}
+    
+    public void setName(String n3);
+    public String getName();
+    public void play();}
 public class Fish extends Animal implements Pet{
+    String name2;
     public Fish(){
         System.out.println("fish is created");
+    }
+    public String getName(){
+        return name2;
+    }
+    public void setName(String n2){
+      this.name2=n2;
     }
 
     @Override
@@ -61,7 +66,7 @@ public class Fish extends Animal implements Pet{
 
     @Override
     public void eat() {
-
+        System.out.println("fish eat fishfood");
     }
     public void play(){
         System.out.println("fish plays with ball");
@@ -69,6 +74,14 @@ public class Fish extends Animal implements Pet{
 }
 public class Main {
     public static void main(String[] args) {
-
+        Spider sp=new Spider();
+        sp.eat();
+        Cat c=new Cat();
+        c.eat();
+        c.play();
+        Fish f=new Fish();
+        f.Walk();
+        f.eat();
+        f.play();
     }
 }
